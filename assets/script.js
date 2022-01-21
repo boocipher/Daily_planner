@@ -25,8 +25,17 @@ $(document).ready(function() {
         } else if (parsedHour < parsedAttr) {
             $(element).css("backgroundColor", "green");
         }
+    // generate key and get item from local storage
+    var key = moment().format('YYYY-MM-DD');
+    key = key + "-" + attr;
+    console.log(key);
     });
 });
 
 // save with local storage
+// listener function for the button
+// from listener/button event, which hour is clicked
+// get text from the input element
+// setItem 
+
 // pull saved events when adding new

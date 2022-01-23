@@ -2,7 +2,6 @@ showDate();
 setColor();
 setInterval(setColor, 60000); // CHECK time and update div color without refresh every minute
 
-
 // show current time&date in header with moment.js
 function showDate() {
     var setDate = moment().format('MMMM Do YYYY, h:mm:ss a');
@@ -28,9 +27,15 @@ $(document).ready(function() {
         } else if (parsedHour < parsedAttr) {
             $(element).css("backgroundColor", "lightgreen");
         }
-       
+        // generate key and get item from local storage in format YYYY-MM-DD-HH
+        var key = moment().format('YYYY-MM-DD');
+        key = key + "-" + attr;
+        console.log('Key to load from local storage: ' + key);
+        // pull saved events when adding new
+        var savedItem = localStorage.getItem(key);
+        console.log('The saved task is: ' + savedItem);
+        $(element).val(savedItem);
     });
-
 });
 }
 
@@ -48,5 +53,3 @@ function handleSave(event) {
 
 // listener function for the button; attaches handler for the save btns
 $(".saveBtn").on("click", handleSave);
-
-
